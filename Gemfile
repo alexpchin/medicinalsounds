@@ -22,6 +22,11 @@ gem "simple_form"
 gem "title"
 gem "uglifier"
 gem "unicorn"
+gem "devise"
+gem "erb2haml"
+gem "carrierwave", "0.9.0"
+gem "rmagick"
+gem "cancan"
 
 group :development do
   gem "spring"
