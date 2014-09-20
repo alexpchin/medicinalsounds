@@ -23,14 +23,17 @@ gem "title"
 gem "uglifier"
 gem "unicorn"
 gem "devise"
+gem "haml-rails"
 gem "erb2haml"
 gem "carrierwave", "0.9.0"
 gem "rmagick"
 gem "cancan"
+gem "soundcloud"
 
 group :development do
   gem "spring"
   gem "spring-commands-rspec"
+  gem "letter_opener"
 end
 
 group :development, :test do
