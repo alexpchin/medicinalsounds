@@ -9,50 +9,72 @@
     = stylesheet_link_tag :application, media: "all"
     = csrf_meta_tags
   %body{:class => body_class}
-    
-    %header
-      #top-bar
-        %nav 
-          %ul 
-            %li= link_to "who", root_url
-            %li= link_to "fb", root_url
-      %nav
-        %ul
-          %li.logo
-            / = link_to image_tag("logo.png"), root_path
-          - if !user_signed_in?
-            %li= link_to "Register", new_user_registration_path
-            %li= link_to "Login", new_user_session_path
-          - else 
-            %li= link_to 'New Post', new_post_path
-            %li= link_to "Logout", destroy_user_session_path, method: :delete
-          %li
-            = link_to "Posts", posts_path
-          %li
-            = link_to "Users", users_path
+    #fb-root
+    :javascript
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&appId=1535877196647406&version=v2.0";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    .wrapper
+      %header
+        #top-bar
+          %nav 
+            %ul 
+              - if !user_signed_in?
+                %li= link_to "Register", new_user_registration_path
+                %li= link_to "Login", new_user_session_path
+              - else 
+                %li= link_to "Logout", destroy_user_session_path, method: :delete
+                %li= link_to 'New Post', new_post_path
+              %li= link_to "who", root_url
+              %li 
+                %a{:href => "https://www.facebook.com/OfficialMedicinalSounds"}
+                  %i.fa.fa-facebook
 
-    = render "flashes"
+                
+        %nav
+          %ul
+            %li.logo
+              / = link_to image_tag("logo.png"), root_path
+            
+            %li
+              = link_to "Posts", posts_path
+            %li
+              = link_to "Users", users_path
 
-    %main
-      = yield
-      = render "javascript"
+      = render "flashes"
+
+      %main
+        = yield
+        = render "javascript"
 
     %footer
       %nav
         %ul
           %li
             %h3 Navigation
-          %li
+          - if !user_signed_in?
+            %li= link_to "Register", new_user_registration_path
+            %li= link_to "Login", new_user_session_path
+          - else 
+            %li= link_to 'New Post', new_post_path
+            %li= link_to "Logout", destroy_user_session_path, method: :delete
+            
         %ul
           %li
             %h3 Latest Posts
-          %li
-        %ul
-          %li
-            %h3
-              %h3 Tags
           %li 
-        %ul
+        %ul.no-borders
           %li
             %h3 Tags
+          %li
+            .post-date
+
+        %ul
+          %li
+            %h3 Contact
+            .fb-like-box{"data-colorscheme" => "light", "data-header" => "false", "data-href" => "https://www.facebook.com/OfficialMedicinalSounds", "data-show-border" => "false", "data-show-faces" => "true", "data-stream" => "false"}
 
