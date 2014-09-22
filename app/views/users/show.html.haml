@@ -1,13 +1,12 @@
 %p#notice= notice
+= image_tag @user.image
 %p
   %strong Firstname:
   = @user.firstname
 %p
   %strong Lastname:
   = @user.lastname
-%p
-  %strong Image:
-  = @user.image
+  
 %p
   %strong Username:
   = @user.username

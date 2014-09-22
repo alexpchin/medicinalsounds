@@ -2,6 +2,22 @@
   Edit #{resource_name.to_s.humanize}
 = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
   = f.error_notification
+
+  .field
+    = f.label :firstname
+    = f.text_field :firstname
+  .field
+    = f.label :lastname
+    = f.text_field :lastname
+  .field
+    = f.label :image
+    = f.text_field :image
+  .field
+    = f.label :remote_image_url
+    = f.text_field :remote_image_url
+  .field
+    = f.label :username
+    = f.text_field :username
   .form-inputs
     = f.input :email, required: true, autofocus: true
     - if devise_mapping.confirmable? && resource.pending_reconfirmation?

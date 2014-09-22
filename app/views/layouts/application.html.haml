@@ -5,23 +5,31 @@
     %meta{:content => "NOODP", :name => "ROBOTS"}/
     %meta{:content => "initial-scale=1", :name => "viewport"}/
     %title= title
+    %link{:href => "http://fonts.googleapis.com/css?family=PT+Mono|Montserrat", :rel => "stylesheet", :type => "text/css"}/
     = stylesheet_link_tag :application, media: "all"
     = csrf_meta_tags
   %body{:class => body_class}
     
-    %header 
+    %header
+      #top-bar
+        %nav 
+          %ul 
+            %li= link_to "who", root_url
+            %li= link_to "fb", root_url
       %nav
         %ul
-          %li
-            = link_to image_tag("logo.png"), root_path
-          %li
-            = link_to "Register", new_user_registration_path
-          %li
-            = link_to "Login", new_user_session_path
-          %li
-            = link_to 'New Post', new_post_path
+          %li.logo
+            / = link_to image_tag("logo.png"), root_path
+          - if !user_signed_in?
+            %li= link_to "Register", new_user_registration_path
+            %li= link_to "Login", new_user_session_path
+          - else 
+            %li= link_to 'New Post', new_post_path
+            %li= link_to "Logout", destroy_user_session_path, method: :delete
           %li
             = link_to "Posts", posts_path
+          %li
+            = link_to "Users", users_path
 
     = render "flashes"
 
@@ -30,3 +38,21 @@
       = render "javascript"
 
     %footer
+      %nav
+        %ul
+          %li
+            %h3 Navigation
+          %li
+        %ul
+          %li
+            %h3 Latest Posts
+          %li
+        %ul
+          %li
+            %h3
+              %h3 Tags
+          %li 
+        %ul
+          %li
+            %h3 Tags
+

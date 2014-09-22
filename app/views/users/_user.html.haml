@@ -1,0 +1,9 @@
+%li
+  = image_tag user.image
+  = user.firstname
+  = user.lastname
+  = user.username
+  = user.role
+  = link_to 'Show', user
+  = link_to 'Edit', edit_user_registration_path(user)
+  = link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }
