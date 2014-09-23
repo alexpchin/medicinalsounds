@@ -1,7 +1,1 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+Post.create!(title: "Years & Years – Real", body: "I heard this track a couple of weeks ago and it’s really grown on it. It comes from London trio Years & Years. This one is the title track from their ‘Real‘ EP which was released on 17 Feb under Kitsune. Have a listen and see what you think. If this is up your street, they’ve just added their latest track to their soundcloud page.")
