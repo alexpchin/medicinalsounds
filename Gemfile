@@ -1,5 +1,4 @@
 source "https://rubygems.org"
-
 ruby "2.1.2"
 
 gem "airbrake"
@@ -43,6 +42,7 @@ group :development, :test do
   gem "factory_girl_rails"
   gem "pry-rails"
   gem "rspec-rails", "~> 3.0.0"
+  gem "bullet"
 end
 
 group :test do
