@@ -3,7 +3,7 @@
     .month
       = "#{post.created_at.strftime("%d")}"
     .month
-      = "#{post.created_at.strftime("%B")[0...3]}"
+      = "#{post.created_at.strftime("%B")[0...3]},#{post.created_at.strftime("%Y")[-2..-1]}"
   %h3= link_to post.title, post
   = "by #{post.user}"
   = link_to 'Edit', edit_post_path(post)
